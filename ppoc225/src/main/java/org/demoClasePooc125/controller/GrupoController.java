@@ -12,4 +12,9 @@ public class GrupoController {
     public List<Grupo> obtenGrupo(){
         return grupoDAO.obtenGrupo();
     }
+
+    public void insertarGrupo(Grupo itemGrupo) {
+        grupoDAO.insertarGrupo(itemGrupo);
+    }
+
 }

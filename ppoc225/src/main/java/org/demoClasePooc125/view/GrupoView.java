@@ -13,6 +13,7 @@ public class GrupoView {
 
 
     public static void main(String[] args) {
+        insertarGrupo();
         obtenGrupo();
     }
 
@@ -24,6 +25,19 @@ public class GrupoView {
         for(Grupo itemGrupo : lista){
             System.out.println("id: " + itemGrupo.getId() + "\tNombre: " + itemGrupo.getNombre() + "\tDescripcion: " + itemGrupo.getDescripcion() + "\tEstado: " + itemGrupo.getEstado());
         }
+    }
+
+
+    private static void insertarGrupo() {
+//        Grupo itemGrupo
+        System.out.println("Ingrese el nombre del grupo: ");
+        String nombre = sc.next();
+        System.out.println("Ingrese el descripcion del grupo: ");
+        String descripcion = sc.next();
+        System.out.println("Ingrese el estado del grupo: ");
+        String estado = sc.next();
+
+        controller.insertarGrupo(new Grupo(nombre, descripcion, estado));
     }
 
 }

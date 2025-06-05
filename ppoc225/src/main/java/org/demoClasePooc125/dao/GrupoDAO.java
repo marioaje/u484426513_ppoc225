@@ -3,10 +3,7 @@ package org.demoClasePooc125.dao;
 import org.demoClasePooc125.misc.Conexion;
 import org.demoClasePooc125.model.Grupo;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +36,27 @@ public class GrupoDAO {
         }
 
         return lista;
+
+    }
+
+    public void insertarGrupo(Grupo itemGrupo){
+        String sql = "INSERT INTO prof_Grupo (nombre, descripcion, estado) VALUES (?, ?, ?)";
+
+
+        try{
+            Connection con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);{
+
+                ps.setString(1, itemGrupo.getNombre());
+                ps.setString(2, itemGrupo.getDescripcion());
+                ps.setString(3, itemGrupo.getEstado());
+            }
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
