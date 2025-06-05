@@ -17,4 +17,11 @@ public class GrupoController {
         grupoDAO.insertarGrupo(itemGrupo);
     }
 
+    public boolean actualizarGrupo(Grupo itemGrupo) {
+        return grupoDAO.actualizarGrupo(itemGrupo);
+    }
+
+    public boolean eliminarGrupo(int id) {
+        return grupoDAO.eliminarGrupo(id);
+    }
 }

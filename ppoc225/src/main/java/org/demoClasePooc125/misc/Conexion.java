@@ -10,8 +10,6 @@ public class Conexion {
     private static final String USER = "u484426513_ppoc225";
     private static final String PASSWORD = "jXc7w:|7Gy;";
 
-
-    //Ocupamos una funcion conexion
     public static Connection getConnection() {
         try{
             return DriverManager.getConnection(URL, USER, PASSWORD);
@@ -39,11 +37,3 @@ public class Conexion {
 
     }
 }
-
-
-//clave: jXc7w:|7Gy;
-//Tú
-//18:08
-//base de datos u484426513_ppoc225
-//usuario u484426513_ppoc225
-//srv863.hstgr.io o puede usar esta IP como tu nombre de host: 45.88.196.5
