@@ -24,7 +24,7 @@ public class EstudianteDAO {
                             rs.getString("nombre"),
                             rs.getString("identificacion"),
                             rs.getString("email"),
-                            rs.getString("fecha_nacimiento"),
+                            rs.getDate("fecha_nacimiento"),
                             rs.getString("estado")
                     );
                     lista.add(items);
@@ -47,7 +47,7 @@ public class EstudianteDAO {
                 ps.setString(1, itemEstudiante.getNombre());
                 ps.setString(2, itemEstudiante.getIdentificacion());
                 ps.setString(3, itemEstudiante.getEmail());
-                ps.setString(4, itemEstudiante.getFechaNacimiento());
+                ps.setDate(4, new java.sql.Date(itemEstudiante.getFechaNacimiento().getTime()));
                 ps.setString(5, itemEstudiante.getEstado());
             }
             ps.executeUpdate();
@@ -66,7 +66,7 @@ public class EstudianteDAO {
                 ps.setString(1, itemEstudiante.getNombre());
                 ps.setString(2, itemEstudiante.getIdentificacion());
                 ps.setString(3, itemEstudiante.getEmail());
-                ps.setString(4, itemEstudiante.getFechaNacimiento());
+                ps.setDate(4, new java.sql.Date(itemEstudiante.getFechaNacimiento().getTime()));
                 ps.setString(5, itemEstudiante.getEstado());
                 ps.setInt(6, itemEstudiante.getId());
             }
