@@ -9,12 +9,10 @@ import java.util.List;
 
 public class GrupoDAO {
 
-    //CRUD
-
-    public List<Grupo> obtenGrupo(){
+    public List<Grupo> obtenerGrupos(){
         List<Grupo> lista = new ArrayList<Grupo>();
 
-        String sql = "select * from prof_Grupo";
+        String sql = "select * from angelica_Grupo";
 
         try {
             Connection con = Conexion.getConnection();
@@ -27,21 +25,17 @@ public class GrupoDAO {
                             rs.getString("descripcion"),
                             rs.getString("estado")
                     );
-                    //insertamos en la lista
                     lista.add(items);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return lista;
-
     }
 
     public void insertarGrupo(Grupo itemGrupo){
-        String sql = "INSERT INTO prof_Grupo (nombre, descripcion, estado) VALUES (?, ?, ?)";
-
+        String sql = "INSERT INTO angelica_Grupo (nombre, descripcion, estado) VALUES (?, ?, ?)";
 
         try{
             Connection con = Conexion.getConnection();
@@ -56,9 +50,36 @@ public class GrupoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
+    public void actualizarGrupo(Grupo itemGrupo){
+        String sql = "UPDATE angelica_Grupo SET nombre = ?, descripcion = ?, estado = ? WHERE id = ?";
 
+        try{
+            Connection con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);{
+                ps.setString(1, itemGrupo.getNombre());
+                ps.setString(2, itemGrupo.getDescripcion());
+                ps.setString(3, itemGrupo.getEstado());
+                ps.setInt(4, itemGrupo.getId());
+            }
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void eliminarGrupo(int id){
+        String sql = "DELETE FROM angelica_Grupo WHERE id = ?";
+
+        try{
+            Connection con = Conexion.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);{
+                ps.setInt(1, id);
+            }
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
